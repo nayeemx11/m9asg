@@ -54,8 +54,14 @@ class _MyBagPageState extends State<MyBagPage> {
     });
   }
 
-  Widget _buildProductCard(String imageAsset, String title, String color,
-      String size, double price, int item, void Function(int, double) updateItem) {
+  Widget _buildProductCard(
+      String imageAsset,
+      String title,
+      String color,
+      String size,
+      double price,
+      int item,
+      void Function(int, double) updateItem) {
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
@@ -205,9 +211,9 @@ class _MyBagPageState extends State<MyBagPage> {
           ],
         ),
         Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
+          bottom: 6,
+          left: 6,
+          right: 6,
           child: Column(
             children: [
               ListTile(
@@ -215,23 +221,21 @@ class _MyBagPageState extends State<MyBagPage> {
                 trailing: Text(
                     "\$${itemPrice.toStringAsFixed(2)}"), // Display the total amount
               ),
-              Container(
-                height: 80, // Increase the height as needed
-                decoration: BoxDecoration(
-                  color: Colors.red, // Background color of the container
-                  borderRadius: BorderRadius.circular(40), // Circular corners
-                ),
-                child: Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      showCongratulationSnackbar(context); // Show the snackbar
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.red, // Set button background color
-                      shape: CircleBorder(), // Circular button shape
-                      padding: EdgeInsets.all(16), // Adjust padding as needed
+              InkWell(
+                onTap: () {
+                  showCongratulationSnackbar(context);
+                },
+                child: Container(
+                  height: 80, // Increase the height as needed
+                  decoration: BoxDecoration(
+                    color: Colors.red, // Background color of the container
+                    borderRadius: BorderRadius.circular(40), // Circular corners
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Check Out",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
-                    child: Text("Check Out", style: TextStyle(fontSize: 18)),
                   ),
                 ),
               ),
